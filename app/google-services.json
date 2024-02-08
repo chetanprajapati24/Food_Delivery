@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "324839129603",
+    "firebase_url": "https://food-delivery-1b742-default-rtdb.firebaseio.com",
+    "project_id": "food-delivery-1b742",
+    "storage_bucket": "food-delivery-1b742.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324839129603:android:0b291ce820d3d613a4c436",
+        "android_client_info": {
+          "package_name": "com.chirag.food"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn51x_qTfi931ulpbG2vrTmPuzdfS5qkw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324839129603:android:5a33527a8199aef5a4c436",
+        "android_client_info": {
+          "package_name": "com.chirag.foodd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn51x_qTfi931ulpbG2vrTmPuzdfS5qkw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,4 @@
 package com.chirag.food;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 public class MainActivity extends AppCompatActivity {
+
     ImageView imageView;
     TextView textView;
     FirebaseAuth Fauth;
@@ -32,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView=(TextView)findViewById(R.id.app_name);
-        imageView=(ImageView)findViewById(R.id.logo);
+
+        imageView = (ImageView)findViewById(R.id.logo);
+        textView = (TextView)findViewById(R.id.app_name);
 
         imageView.animate().alpha(0f).setDuration(0);
         textView.animate().alpha(0f).setDuration(0);
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(MainActivity.this,error.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
 
                             }
                         });

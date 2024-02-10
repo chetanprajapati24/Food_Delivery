@@ -1,5 +1,4 @@
 package com.chirag.food;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;

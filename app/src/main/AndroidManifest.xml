@@ -13,10 +13,34 @@
         android:theme="@style/Theme.Food"
         tools:targetApi="31">
         <activity
-            android:name=".ChefForgotPassword"
+            android:name=".ChefFoodPanel_BottomNavigation"
             android:exported="false" />
         <activity
-            android:name=".ChefFoodPanel_BottomNavigation"
+            android:name=".Delivery_sendotp"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryFoodPanel_BottomNavigation"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Delivery_VerifyPhone"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerFoofPanel_BottomNavigation"
+            android:exported="false" />
+        <activity
+            android:name=".sendotp"
+            android:exported="false" />
+        <activity
+            android:name=".VerifyPhone"
+            android:exported="false" />
+        <activity
+            android:name=".ChefForgotPassword"
             android:exported="false" />
         <activity
             android:name=".Chefsendotp"

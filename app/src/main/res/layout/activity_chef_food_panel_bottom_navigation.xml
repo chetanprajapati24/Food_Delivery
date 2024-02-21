@@ -7,10 +7,10 @@
     tools:context=".ChefFoodPanel_BottomNavigation">
 
     <FrameLayout
+        android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/frame_container"
-        android:layout_above="@id/chef_bottom_navigation"/>
+        android:layout_above="@id/chef_bottom_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

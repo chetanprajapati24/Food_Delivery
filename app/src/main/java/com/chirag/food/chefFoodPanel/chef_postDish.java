@@ -1,12 +1,7 @@
 package com.chirag.food.chefFoodPanel;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,17 +10,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.canhub.cropper.CropImage;
-import com.canhub.cropper.CropImageView;
+import com.canhub.cropper.CropImageContract;
+import com.canhub.cropper.CropImageContractOptions;
+import com.canhub.cropper.CropImageOptions;
 import com.chirag.food.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -47,6 +44,7 @@ import java.util.UUID;
 
 public class chef_postDish extends AppCompatActivity {
     ImageButton imageButton;
+    ImageView imageView;
     Button post_dish;
     Spinner Dishes;
     TextInputLayout desc,qty,pri;
@@ -168,6 +166,7 @@ public class chef_postDish extends AppCompatActivity {
 
     }
 
+
     private boolean isValid() {
 
         desc.setErrorEnabled(false);
@@ -200,44 +199,57 @@ public class chef_postDish extends AppCompatActivity {
         isValid = (isValidDescription && isValidQuantity && isValidPrice)?true:false;
         return isValid;
     }
-    private void startCropImageActivity(Uri imageUri) {
-        CropImage.activity(imageUri)
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .setMultiTouchEnabled(true)
-                .start(this);
-    }
-    private void onSelectImageclick(View v){
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
-        }else{
-            startCropImageActivity();
+
+    private void onSelectImageclick(View v) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
+        } else {
+            cropImageLauncher.launch(new CropImageContractOptions(
+                    null, new CropImageOptions(
+                    true,
+                    true
+            )
+            ));
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == 0 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-            startCropImageActivity();
-        }else{
-            Toast.makeText(this,"Cancelling! Permission Not Granted",Toast.LENGTH_SHORT).show();
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 0 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            cropImageLauncher.launch(new CropImageContractOptions(
+                    null, new CropImageOptions(
+                    true,
+                    true
+            )
+            ));
+        } else {
+            Toast.makeText(this, "Cancelling! Permission Not Granted", Toast.LENGTH_SHORT).show();
         }
     }
 
-    @Override
-    @SuppressLint("NewApi")
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if(resultCode == RESULT_OK){
-                ((ImageButton) findViewById(R.id.image_upload)).setImageURI(result.getUri());
-                Toast.makeText(this,"Cropped Successfully!",Toast.LENGTH_SHORT).show();
-            }else if(resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
-                Toast.makeText(this,"Failed To Crop"+result.getClass(),Toast.LENGTH_SHORT).show();
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+  /*  private final ActivityResultLauncher<CropImageContractOptions> cropImageLauncher = registerForActivityResult(new CropImageContract(),
+            cropResult -> {
+                if (cropResult.isSuccessful()) {
+                    ((ImageButton) findViewById(R.id.image_upload)).setImageURI(cropResult.getUriContent());
+                    Toast.makeText(this, "Cropped Successfully!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Failed To Crop" + cropResult.getClass(), Toast.LENGTH_SHORT).show();
+                }
+            }); */
+  private final ActivityResultLauncher<CropImageContractOptions> cropImageLauncher = registerForActivityResult(new CropImageContract(),
+          cropResult -> {
+              if (cropResult.isSuccessful()) {
+                  Uri croppedImageUri = cropResult.getOriginalUri();
+                  imageuri = croppedImageUri; // Save the cropped image's URI
+                  ((ImageButton) findViewById(R.id.image_upload)).setImageURI(croppedImageUri);
+                  Toast.makeText(this, "Cropped Successfully!", Toast.LENGTH_SHORT).show();
+              } else {
+                  Toast.makeText(this, "Failed To Crop" + cropResult.getClass(), Toast.LENGTH_SHORT).show();
+              }
+          });
 
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+
+
+
 }

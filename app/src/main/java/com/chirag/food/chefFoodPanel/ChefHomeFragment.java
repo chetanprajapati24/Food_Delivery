@@ -29,10 +29,11 @@ public class ChefHomeFragment extends Fragment {
         return v;
     }
 
-    @Override
+  @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.logout,menu);
+
     }
 
     @Override

@@ -2,9 +2,12 @@ package com.chirag.food;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.chirag.food.chefFoodPanel.ChefHomeFragment;
@@ -15,15 +18,25 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ChefFoodPanel_BottomNavigation extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
+   // Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // toolbar =findViewById(R.id.toolbar);
+       // setSupportActionBar(toolbar);
         setContentView(R.layout.activity_chef_food_panel_bottom_navigation);
         BottomNavigationView navigationView =findViewById(R.id.chef_bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
 
+
     }
 
+  /*  @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater =getMenuInflater();
+        inflater.inflate(R.menu.logout);
+        return true;
+    } */
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

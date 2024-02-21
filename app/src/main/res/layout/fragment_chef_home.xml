@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:menu="@menu/logout">
+    tools:menu="@menu/logout"
+   >
+
+
 
 </RelativeLayout>

@@ -7,6 +7,12 @@
     tools:context=".chefFoodPanel.chef_postDish"
     android:background="@drawable/img11">
 
+    <com.canhub.cropper.CropImageView
+        android:id="@+id/crop_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
     <ImageButton
         android:id="@+id/image_upload"
         android:layout_width="120dp"

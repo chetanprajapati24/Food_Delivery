@@ -204,6 +204,7 @@ public class chef_postDish extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
         } else {
+
             cropImageLauncher.launch(new CropImageContractOptions(
                     null, new CropImageOptions(
                     true,
@@ -248,8 +249,4 @@ public class chef_postDish extends AppCompatActivity {
                   Toast.makeText(this, "Failed To Crop" + cropResult.getClass(), Toast.LENGTH_SHORT).show();
               }
           });
-
-
-
-
 }

@@ -7,6 +7,4 @@
     tools:menu="@menu/logout"
    >
 
-
-
-</RelativeLayout>
+    </RelativeLayout>

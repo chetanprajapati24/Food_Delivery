@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 
+import com.chirag.food.chefFoodPanel.ChefHomeFragment;
+import com.chirag.food.chefFoodPanel.ChefOrderfragment;
 import com.chirag.food.deliveryFoodPanel.DeliveryPendingOrdersFragment;
 import com.chirag.food.deliveryFoodPanel.DeliveryShippingOrdersFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,7 +23,14 @@ public class DeliveryFoodPanel_BottomNavigation extends AppCompatActivity implem
         setContentView(R.layout.activity_delivery_food_panel_bottom_navigation);
         BottomNavigationView navigationView = findViewById(R.id.delivery_bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
-
+        String name=getIntent().getStringExtra("PAGE");
+        if(name!=null){
+            if(name.equalsIgnoreCase("DeliveryOrderpage")){
+                loaddeliveryfragment(new DeliveryPendingOrdersFragment());
+            }else{
+                loaddeliveryfragment(new DeliveryShippingOrdersFragment());
+            }
+        }
     }
 
     @Override

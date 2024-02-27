@@ -27,7 +27,6 @@ import java.util.List;
 import com.chirag.food.R;
 import com.chirag.food.UpdateDishModel;
 
-
 public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     RecyclerView recyclerView;
@@ -77,12 +76,12 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
             }
         });
 
-
         return v;
     }
 
     @Override
     public void onRefresh() {
+
         customermenu();
     }
 

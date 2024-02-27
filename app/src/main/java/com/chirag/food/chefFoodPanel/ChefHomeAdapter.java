@@ -40,7 +40,7 @@ public class ChefHomeAdapter extends RecyclerView.Adapter<ChefHomeAdapter.ViewHo
         final UpdateDishModel updateDishModel = updateDishModelList.get(position);
         holder.dishes.setText(updateDishModel.getDishes());
         updateDishModel.getRandomUID();
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.dishes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mcont,UpdateDelete_Dish.class);
@@ -48,7 +48,6 @@ public class ChefHomeAdapter extends RecyclerView.Adapter<ChefHomeAdapter.ViewHo
                 mcont.startActivity(intent);
             }
         });
-
     }
 
     @Override

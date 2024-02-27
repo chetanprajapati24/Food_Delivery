@@ -3,6 +3,7 @@ package com.chirag.food.customerFoodPanel;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.chirag.food.R;
 import com.chirag.food.UpdateDishModel;
 import com.google.firebase.database.DatabaseReference;
+
 
 
 import java.util.List;
@@ -46,8 +48,19 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
         holder.Dishname.setText(updateDishModel.getPrice());
         updateDishModel.getRandomUID();
         updateDishModel.getChefId();
-        holder.Price.setText("Price: "+updateDishModel.getPrice()+"Rs");
+        holder.price.setText("Price: ₹ " + updateDishModel.getPrice());
+       /* holder.itemView.setOnClickListener(new View.OnClickListener() {
+           @Override
+            public void onClick(View v) {
 
+              Intent intent=new Intent(mcontext,OrderDish.class);
+                intent.putExtra("FoodMenu",updateDishModel.getRandomUID());
+                intent.putExtra("ChefId",updateDishModel.getChefId());
+
+
+                mcontext.startActivity(intent);
+            }
+        }); */
     }
 
     @Override
@@ -55,18 +68,17 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
         return updateDishModellist.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
-        TextView Dishname,Price;
-
+        TextView Dishname,price;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.menu_image);
-            Dishname = itemView.findViewById(R.id.dishname);
-            Price = itemView.findViewById(R.id.dishprice);
+            imageView=itemView.findViewById(R.id.menu_image);
+            Dishname=itemView.findViewById(R.id.dishname);
+            price=itemView.findViewById(R.id.dishprice);
+
         }
     }
-
 }

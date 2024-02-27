@@ -14,6 +14,8 @@ import com.chirag.food.chefFoodPanel.ChefHomeFragment;
 import com.chirag.food.chefFoodPanel.ChefOrderfragment;
 import com.chirag.food.chefFoodPanel.ChefPendingOrderFragment;
 import com.chirag.food.chefFoodPanel.ChefProfileFragment;
+import com.chirag.food.customerFoodPanel.CustomerHomeFragment;
+import com.chirag.food.customerFoodPanel.CustomerTrackFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ChefFoodPanel_BottomNavigation extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -27,6 +29,23 @@ public class ChefFoodPanel_BottomNavigation extends AppCompatActivity implements
         setContentView(R.layout.activity_chef_food_panel_bottom_navigation);
         BottomNavigationView navigationView =findViewById(R.id.chef_bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
+        String name=getIntent().getStringExtra("PAGE");
+        if(name!=null){
+            if(name.equalsIgnoreCase("Orderpage")){
+                loadcheffragment(new ChefHomeFragment());
+            }else if (name.equalsIgnoreCase("Confirmpage")){
+                loadcheffragment(new ChefOrderfragment());
+
+            }else if (name.equalsIgnoreCase("AcceptOrderpage")){
+                loadcheffragment(new ChefOrderfragment());
+
+            }else if (name.equalsIgnoreCase("Deliverepage")){
+                loadcheffragment(new ChefOrderfragment());
+            }else{
+                loadcheffragment(new ChefHomeFragment());
+            }
+
+        }
 
 
     }

@@ -46,7 +46,7 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".CustomerFoofPanel_BottomNavigation"
+            android:name=".CustomerFoodPanel_BottomNavigation"
             android:exported="false" />
         <activity
             android:name=".sendotp"
